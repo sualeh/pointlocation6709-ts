@@ -1,6 +1,6 @@
 # Point Location 6709 
 
-A JavaScript representation of [ISO 6709] geographic point location by coordinates. Validity is enforced by unit tests, which run in a browser. (See the sister project, a Java library for [Point Location 6709], which more full-featured, with a parser and formatter.)
+A TypeScript representation of [ISO 6709] geographic point location by coordinates. Validity is enforced by unit tests, which run in a browser. (See the sister project, a Java library for [Point Location 6709], which more full-featured, with a parser and formatter.)
 
 ## Download
 
