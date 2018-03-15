@@ -1,4 +1,4 @@
-namespace pointlocation {
+namespace PointLocation {
 
   class Field {
 
@@ -26,9 +26,11 @@ namespace pointlocation {
 
   }
 
-  export const DEGREES = new Field(0, 'degrees', '\u00B0');
-  export const MINUTES = new Field(1, 'minutes', '"');
-  export const SECONDS = new Field(2, 'seconds', '\'');
+  export class Fields {
+    static DEGREES = new Field(0, 'degrees', '\u00B0');
+    static MINUTES = new Field(1, 'minutes', '"');
+    static SECONDS = new Field(2, 'seconds', '\'');
+  }
 
 
   /**
@@ -37,7 +39,7 @@ namespace pointlocation {
   *
   * @author Sualeh Fatehi
   */
-  class Angle {
+  export class Angle {
 
     private _radians: number;
 
@@ -57,8 +59,8 @@ namespace pointlocation {
     checkRange(range: number) {
       var degrees = this.getDegrees();
       if (Math.abs(degrees) > range) {
-        throw new Error("" + degrees + DEGREES.toString() + " is out of range, +/-"
-          + range + DEGREES.toString());
+        throw new Error("" + degrees + Fields.DEGREES.toString() + " is out of range, +/-"
+          + range + Fields.DEGREES.toString());
       }
     }
 
@@ -70,8 +72,8 @@ namespace pointlocation {
       return Math.cos(this._radians);
     }
 
-    public getDirection() {
-      return null;
+    public getDirection(): string {
+      return "";
     }
 
     /**
@@ -125,14 +127,14 @@ namespace pointlocation {
     }
 
     public toString() {
-      var absIntDegrees = Math.abs(this.getField(DEGREES));
-      var absIntMinutes = Math.abs(this.getField(MINUTES));
-      var absIntSeconds = Math.abs(this.getField(SECONDS));
+      var absIntDegrees = Math.abs(this.getField(Fields.DEGREES));
+      var absIntMinutes = Math.abs(this.getField(Fields.MINUTES));
+      var absIntSeconds = Math.abs(this.getField(Fields.SECONDS));
       var direction = this.getDirection();
 
-      var angleString = "" + absIntDegrees + DEGREES.toString() + " " + absIntMinutes + MINUTES.toString();
+      var angleString = "" + absIntDegrees + Fields.DEGREES.toString() + " " + absIntMinutes + Fields.MINUTES.toString();
       if (absIntSeconds > 0) {
-        angleString = angleString + " " + absIntSeconds + SECONDS.toString();
+        angleString = angleString + " " + absIntSeconds + Fields.SECONDS.toString();
       }
       if (direction === null) {
         if (this.getRadians() < 0) {
@@ -146,10 +148,6 @@ namespace pointlocation {
       return angleString;
     }
 
-  }
-
-  export class AngleUtility {
-
     /**
     * Static construction method, constructs an angle from the degree
     * value provided.
@@ -159,7 +157,7 @@ namespace pointlocation {
     * @return A new Angle.
     */
     static fromDegrees(degrees: number) {
-      return AngleUtility.fromRadians(degrees * Math.PI / 180.0);
+      return Angle.fromRadians(degrees * Math.PI / 180.0);
     }
 
     /**
@@ -181,19 +179,15 @@ namespace pointlocation {
   *
   * @author Sualeh Fatehi
   */
-  class Latitude {
-
-    private _latitude: Angle;
+  export class Latitude extends Angle {
 
     constructor(angle: Angle) {
-
-      this._latitude = new Angle(angle.getRadians());
-
-      this._latitude.checkRange(90);
+      super(angle.getRadians());
+      this.checkRange(90);
     }
 
-    public getDirection() {
-      if (this._latitude.getRadians() < 0) {
+    public getDirection(): string {
+      if (this.getRadians() < 0) {
         return "S";
       }
       else {
@@ -208,21 +202,22 @@ namespace pointlocation {
   *
   * @author Sualeh Fatehi
   */
-  var Longitude = function (angle) {
+  export class Longitude extends Angle {
 
-    var longitude = new Angle(angle.getRadians());
+    constructor(angle: Angle) {
+      super(angle.getRadians());
+      this.checkRange(180);
+    }
 
-    longitude.checkRange(180);
-
-    longitude.getDirection = function () {
-      if (longitude.getRadians() < 0) {
+    public getDirection(): string {
+      if (this.getRadians() < 0) {
         return "W";
       }
       else {
         return "E";
       }
-    };
+    }
 
-    return longitude;
+  }
 
-  };
+}
