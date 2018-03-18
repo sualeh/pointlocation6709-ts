@@ -13,6 +13,8 @@ describe('Test Angle', () => {
     expect(angle1.getField(PointLocation6709.Fields.DEGREES)).to.equal(57);
     expect(angle1.getField(PointLocation6709.Fields.MINUTES)).to.equal(17);
     expect(angle1.getField(PointLocation6709.Fields.SECONDS)).to.equal(45);
+    expect(angle1.sin()).to.equal(0.8414709848078965);
+    expect(angle1.cos()).to.equal(0.5403023058681398);
     expect(angle1.toString()).to.equal("57\u00B0 17\" 45'");
 
     let angle_1 = new PointLocation6709.Angle(-1);
@@ -21,6 +23,8 @@ describe('Test Angle', () => {
     expect(angle_1.getField(PointLocation6709.Fields.DEGREES)).to.equal(-57);
     expect(angle_1.getField(PointLocation6709.Fields.MINUTES)).to.equal(-17);
     expect(angle_1.getField(PointLocation6709.Fields.SECONDS)).to.equal(-45);
+    expect(angle_1.sin()).to.equal(-0.8414709848078965);
+    expect(angle_1.cos()).to.equal(0.5403023058681398);
     expect(angle_1.toString()).to.equal("-57\u00B0 17\" 45'");
   });
 
