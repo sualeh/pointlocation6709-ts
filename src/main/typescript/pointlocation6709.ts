@@ -1,4 +1,5 @@
-namespace PointLocation {
+
+export namespace PointLocation6709 {
 
   class Field {
 
@@ -142,7 +143,10 @@ namespace PointLocation {
         }
       }
       else {
-        angleString = angleString + " " + direction;
+        if (direction != "") {
+          angleString = angleString + " ";
+        }
+        angleString = angleString + direction;
       }
 
       return angleString;
