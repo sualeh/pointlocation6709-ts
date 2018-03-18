@@ -39,3 +39,39 @@ describe('Test Angle', () => {
   });
 
 });
+
+describe('Test Latitude', () => {
+
+  it('Happy path test', () => {
+    let angle1 = new PointLocation6709.Angle(1);
+    let latitude1 = new PointLocation6709.Latitude(angle1);
+    expect(latitude1.getRadians()).to.equal(1);
+    expect(latitude1.getDegrees()).to.equal(57.29577951308232);
+    expect(latitude1.getField(PointLocation6709.Fields.DEGREES)).to.equal(57);
+    expect(latitude1.getField(PointLocation6709.Fields.MINUTES)).to.equal(17);
+    expect(latitude1.getField(PointLocation6709.Fields.SECONDS)).to.equal(45);
+    expect(latitude1.sin()).to.equal(0.8414709848078965);
+    expect(latitude1.cos()).to.equal(0.5403023058681398);
+    expect(latitude1.toString()).to.equal("57\u00B0 17\" 45' N");
+
+    let angle_1 = new PointLocation6709.Angle(-1);
+    let latitude_1 = new PointLocation6709.Latitude(angle_1);
+    expect(latitude_1.getRadians()).to.equal(-1);
+    expect(latitude_1.getDegrees()).to.equal(-57.29577951308232);
+    expect(latitude_1.getField(PointLocation6709.Fields.DEGREES)).to.equal(-57);
+    expect(latitude_1.getField(PointLocation6709.Fields.MINUTES)).to.equal(-17);
+    expect(latitude_1.getField(PointLocation6709.Fields.SECONDS)).to.equal(-45);
+    expect(latitude_1.sin()).to.equal(-0.8414709848078965);
+    expect(latitude_1.cos()).to.equal(0.5403023058681398);
+    expect(latitude_1.toString()).to.equal("57\u00B0 17\" 45' S");
+  });
+
+  it('Negative test', () => {
+    let angle1 = PointLocation6709.Angle.fromDegrees(181);
+    expect(() => new PointLocation6709.Latitude(angle1)).to.throw('181\u00B0 is out of range, +/-90\u00B0');
+
+    let angle_1 = PointLocation6709.Angle.fromDegrees(-181);
+    expect(() => new PointLocation6709.Latitude(angle_1)).to.throw('-181\u00B0 is out of range, +/-90\u00B0');
+  });
+
+});

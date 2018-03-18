@@ -57,7 +57,7 @@ export namespace PointLocation6709 {
       return this._radians;
     }
 
-    checkRange(range: number) {
+    protected checkRange(range: number) {
       var degrees = this.getDegrees();
       if (Math.abs(degrees) > range) {
         throw new Error("" + degrees + Fields.DEGREES.toString() + " is out of range, +/-"
