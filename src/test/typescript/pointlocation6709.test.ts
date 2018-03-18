@@ -10,6 +10,10 @@ describe('Test Angle', () => {
     let angle1 = new PointLocation6709.Angle(1);
     expect(angle1.getRadians()).to.equal(1);
     expect(angle1.toString()).to.equal("57\u00B0 17\" 45'");
+
+    let angle_1 = new PointLocation6709.Angle(-1);
+    expect(angle_1.getRadians()).to.equal(-1);
+    expect(angle_1.toString()).to.equal("-57\u00B0 17\" 45'");
   });
 
 });

@@ -137,7 +137,7 @@ export namespace PointLocation6709 {
       if (absIntSeconds > 0) {
         angleString = angleString + " " + absIntSeconds + Fields.SECONDS.toString();
       }
-      if (direction === null) {
+      if (direction == "") {
         if (this.getRadians() < 0) {
           angleString = '-' + angleString;
         }
