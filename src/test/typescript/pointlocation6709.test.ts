@@ -66,7 +66,7 @@ describe('Test Latitude', () => {
     expect(latitude_1.toString()).to.equal("57\u00B0 17\" 45' S");
   });
 
-  it('Negative test', () => {
+  it('Negative test, out of range', () => {
     let angle1 = PointLocation6709.Angle.fromDegrees(91);
     expect(() => new PointLocation6709.Latitude(angle1)).to.throw('91\u00B0 is out of range, +/-90\u00B0');
 
@@ -102,7 +102,7 @@ describe('Test Longitude', () => {
     expect(longitude_1.toString()).to.equal("57\u00B0 17\" 45' W");
   });
 
-  it('Negative test', () => {
+  it('Negative test, out of range', () => {
     let angle1 = PointLocation6709.Angle.fromDegrees(181);
     expect(() => new PointLocation6709.Longitude(angle1)).to.throw('181\u00B0 is out of range, +/-180\u00B0');
 

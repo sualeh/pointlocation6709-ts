@@ -3,9 +3,9 @@ export namespace PointLocation6709 {
 
   class Field {
 
-    private _name: string;
-    private _ordinal: number;
-    private _symbol: string;
+    private readonly _name: string;
+    private readonly _ordinal: number;
+    private readonly _symbol: string;
 
     constructor(ordinal: number, name: string, symbol: string) {
       this._name = name;
@@ -13,24 +13,24 @@ export namespace PointLocation6709 {
       this._symbol = symbol;
     }
 
-    public getName() {
+    public getName(): string {
       return this._name;
     }
 
-    public getOrdinal() {
+    public getOrdinal(): number {
       return this._ordinal;
     }
 
-    public toString() {
+    public toString(): string {
       return this._symbol;
     }
 
   }
 
   export class Fields {
-    static DEGREES = new Field(0, 'degrees', '\u00B0');
-    static MINUTES = new Field(1, 'minutes', '"');
-    static SECONDS = new Field(2, 'seconds', '\'');
+    static readonly DEGREES = new Field(0, 'degrees', '\u00B0');
+    static readonly MINUTES = new Field(1, 'minutes', '"');
+    static readonly SECONDS = new Field(2, 'seconds', '\'');
   }
 
 
@@ -42,22 +42,21 @@ export namespace PointLocation6709 {
   */
   export class Angle {
 
-    private _radians: number;
+    private readonly _radians: number;
 
     constructor(radians: number) {
       this._radians = radians;
     }
 
-
-    public getDegrees() {
+    public getDegrees(): number {
       return this._radians * 180.0 / Math.PI;
     }
 
-    public getRadians() {
+    public getRadians(): number {
       return this._radians;
     }
 
-    protected checkRange(range: number) {
+    protected checkRange(range: number): void {
       var degrees = this.getDegrees();
       if (Math.abs(degrees) > range) {
         throw new Error("" + degrees + Fields.DEGREES.toString() + " is out of range, +/-"
@@ -65,11 +64,11 @@ export namespace PointLocation6709 {
       }
     }
 
-    public sin() {
+    public sin(): number {
       return Math.sin(this._radians);
     }
 
-    public cos() {
+    public cos(): number {
       return Math.cos(this._radians);
     }
 
@@ -85,7 +84,7 @@ export namespace PointLocation6709 {
      *          Value to split
      * @return Split parts
      */
-    private sexagesimalSplit(value: number) {
+    private sexagesimalSplit(value: number): number[] {
 
       var absValue;
       var units;
@@ -115,10 +114,9 @@ export namespace PointLocation6709 {
       seconds = seconds * sign;
 
       return [units, minutes, seconds];
-
     }
 
-    public getField(field: Field) {
+    public getField(field: Field): number {
       /// <summary>Gets an angle field - such as degrees, minutes, or seconds. Signs
       /// will be consistent.</summmary>
       /// <param name="field">One of the field constants specifying the field to be
@@ -127,7 +125,7 @@ export namespace PointLocation6709 {
       return this.sexagesimalSplit(this.getDegrees())[field.getOrdinal().valueOf()];
     }
 
-    public toString() {
+    public toString(): string {
       var absIntDegrees = Math.abs(this.getField(Fields.DEGREES));
       var absIntMinutes = Math.abs(this.getField(Fields.MINUTES));
       var absIntSeconds = Math.abs(this.getField(Fields.SECONDS));
@@ -160,7 +158,7 @@ export namespace PointLocation6709 {
     *        Value of the angle in degrees.
     * @return A new Angle.
     */
-    static fromDegrees(degrees: number) {
+    static fromDegrees(degrees: number): Angle {
       return Angle.fromRadians(degrees * Math.PI / 180.0);
     }
 
@@ -172,7 +170,7 @@ export namespace PointLocation6709 {
     *        Value of the angle in radians.
     * @return A new Angle.
     */
-    static fromRadians(radians: number) {
+    static fromRadians(radians: number): Angle {
       return new Angle(radians);
     }
 
