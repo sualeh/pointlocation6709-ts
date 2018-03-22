@@ -6,14 +6,23 @@ A TypeScript representation of [ISO 6709] geographic point location by coordinat
 
 You can download the TypeScript library from npm.
 
-## Testing
+## Development
+
+### Test
 
 Run
 ```
 npm test
 ```
 
-## Publish
+### Build
+
+Run
+```
+npm run build
+```
+
+### Publish
 
 Run
 ```

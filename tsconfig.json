@@ -23,5 +23,8 @@
   },
   "include": [
     "src/main/typescript/**/*"
+  ],
+  "exclude": [
+    "src/main/typescript/**/*main*"
   ]
 }

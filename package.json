@@ -4,6 +4,7 @@
   "description": "ISO 6709 Point Location - Typescript Implementation",
   "main": "src/main/typescript/pointlocation6709.main.ts",
   "scripts": {
+    "build": "tsc",
     "test": "mocha -r ts-node/register src/**/*.test.ts"
   },
   "keywords": [
