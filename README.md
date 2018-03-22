@@ -11,22 +11,22 @@ You can download the TypeScript library from npm.
 ### Test
 
 Run
-```
-npm test
+```sh
+npm install-test
 ```
 
 ### Build
 
 Run
-```
+```sh
 npm run build
 ```
 
 ### Publish
 
 Run
-```
-npm install-test
+```sh
+npm publish
 ```
 
 
