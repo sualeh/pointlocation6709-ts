@@ -1,11 +1,24 @@
 # Point Location 6709 
 
-A TypeScript representation of [ISO 6709] geographic point location by coordinates. Validity is enforced by unit tests, which run in a browser. (See the sister project, a Java library for [Point Location 6709], which more full-featured, with a parser and formatter.)
+A TypeScript representation of [ISO 6709] geographic point location by coordinates. Validity is enforced by unit tests. (See the sister project, a Java library for [Point Location 6709], which more full-featured, with a parser and formatter.)
 
 ## Download
 
-You can download the JavaCript library from this project source.
+You can download the TypeScript library from npm.
 
+## Testing
+
+Run
+```
+npm test
+```
+
+## Publish
+
+Run
+```
+npm install-test
+```
 
 
 [ISO 6709]: https://en.wikipedia.org/wiki/ISO_6709
