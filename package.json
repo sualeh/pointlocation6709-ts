@@ -2,7 +2,7 @@
   "name": "pointlocation6709-ts",
   "version": "0.0.1",
   "description": "ISO 6709 Point Location - Typescript Implementation",
-  "main": "pointlocation6709.ts",
+  "main": "src/main/typescript/pointlocation6709.main.ts",
   "scripts": {
     "test": "mocha -r ts-node/register src/**/*.test.ts"
   },
