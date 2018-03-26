@@ -8,11 +8,18 @@ You can download the TypeScript library from npm.
 
 ## Development
 
+### Install Pre-requisites
+
+Run
+```sh
+npm install
+```
+
 ### Test
 
 Run
 ```sh
-npm install-test
+npm test
 ```
 
 ### Build
@@ -24,7 +31,12 @@ npm run build
 
 ### Publish
 
-Run
+To check packaging, run
+```sh
+npm pack
+```
+
+To publish, run
 ```sh
 npm publish
 ```

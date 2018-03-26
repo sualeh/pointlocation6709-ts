@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "mocha -r ts-node/register ./src/test/typescript/**/*.test.ts",
-    "doc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src/main/typescript"
+    "typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src/main/typescript"
   },
   "keywords": [
     "ISO 6709",
