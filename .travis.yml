@@ -10,9 +10,10 @@ before_script:
   - npm install
 
 script:
-  - npm build
-  - npm test-only
-  - npm typedoc
+  - npm run build
+  - npm test
+  - npm run typedoc
+  - touch ./docs/.nojekyll
 
 after_success:
   - npm publish
