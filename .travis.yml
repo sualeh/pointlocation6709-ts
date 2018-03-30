@@ -30,7 +30,6 @@ deploy:
     on:
       repo: sualeh/pointlocation6709-ts
       branch: master
-      tags: true
     file_glob: true
     file: "pointlocation6709-ts-*.tgz"
   - provider: pages
@@ -40,7 +39,6 @@ deploy:
     on:
       repo: sualeh/pointlocation6709-ts
       branch: master
-      tags: true
     local_dir: "./docs"
     email: "sualeh@hotmail.com"
     name: "Sualeh Fatehi"
