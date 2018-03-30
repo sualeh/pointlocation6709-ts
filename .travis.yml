@@ -16,17 +16,23 @@ script:
   - touch ./docs/.nojekyll
 
 deploy:
+  - provider: npm
+    email: sualeh@hotmail.com
+    api_key:
+      secure: hbLQNH7KlcRFId4D16sYhpAvrpqKb6F4fIzuvhnhBsZZVoUhyxRMdusabFvzOqraWrY7Be+9lSV8wV3NllTXhDPiv63/3zf86TfHqtGvbQ+roytczBRzB1UvuytYvXXwfa6a4KcxKaKezlsi7fDCFyf8hOiYhTakdT1MveHavSq9c668L+ZfZO7Gh7svp+hFpWM8in1C0BQbzdmzN3R1ZYjFi0TwicAwvjRwyqHH81H0x2oXRKd8wdJ3zZ2EwmdYJJJoSm0fsQiXLHwibjtUBAsn/ctr+uWJdRCtcPLCZo9IKNGZbZeDE5aKsSML9ScUBIMyLY0I2I4oZ9T/t951Hivxp/yO8w3Ch1krHitS2dcO4VfbT+1SMZb/8WuEkgdggOlzAhm6PPWBFJv520OQB6DQq+Ukc3gekJgHtRVA/r2sLOhJTYnbfmmbTlH2uOAczQvZsLpb/uk7rIMAth7huXEgqtihz7ezS1OOsTmi9Mv9eIrIUjkKYiVpIERirTshSGgllRCyimQ2XKej9T3qGZs/JZ+vN9PlQhCLiq4KPC+XH0oajLQVpZ0/rO34c7d/c7MoHEbAuEPedrWHmR2iou/Uq4UqdvW/i+arJjUJqUjr/lEmK15ODIY/Sd1ryL5HRHsU9jtB1ffW/Z900N+6fZ2LRCCRXHMJiUJSex6hORs=
+    on:
+      repo: sualeh/pointlocation6709-ts
+      branch: master
   - provider: releases
     api_key:
-      secure: ozkdQjIFJqyzLaX1FNTn/nP+CpuQa9+HoO9pxdMYSNrRn4AWb1WBl37/76QBLBI6ehvRLqPolbz32JxUmyYW/HMuDqI+8vlE2i5iOy5DZHvSayU5U8GwzHg8ibSfXpnEwc2fMmnOEdQeEjnRRU9Aa2k1/8B/MVa6ouF9jjpt+g9tZeXyvitBndD9SlpHb/zlEfiGTjPWHXABBu6K1omWotClbDpr3u5PhljZiCMOwV6gi8FAXTcV9Q/JXp29d9kDlrLUFmAAh6rLaBCAMrum9AnLtEht85YzxZEZAgfnuqHLf77Z65u1J7mLe0rIYXCal1q/Kn2dzg2HXPChvaZqbXFxOQ2V1WoNiyqtYE9tdYIbDAaM3Igzq+WSovrAHil8aBeWXeFdUS+AgQL2yEu/KiV0ggnrviOV6gvVlDRMEbXEg2+rkvX+qeDnlriB/oS8v5sWiPVaVbP6YfBFfmG2VGKsHDdXonG7/id5aLIQ4t9q2IFgKe/qO8hOkZMIMScFkwrPleNpqqo0VvKPmCS07S9cEMqimXkj18Vmh6rMM0w6yt0vjpOT9NjRFWn/MvAGH0dLBO5Jm8z2wFjXggNw3XiglYy8EUxYQunvhJEZOmFtls5g5rSNVfTuZsjoOYOye6DrdtewmB7yzVOGgBaBVUsIr0POxQv+x238rkwfSyo=
+      secure: ah9c1JUTzbqpFdwvVBTLGaSx9/r5PIPhF1TIDRM6ilEEHNWxFAh76Z9XCFm6xPgYfMjTG3RPObpJWypkU5AeieJFQss5GhdD0O3rcvU5OqRkEqtsKG+Oixs0YnA+QLMA9CTdscx51nkOtRMddCUKbjPLkMn7yDulpFFtibEv1bsdGSvIOw93LUSvGpUeE+1AaRQ5/6D+39VRUI1Xg1LWjF1AKKoODH1g99pl3gO02vGaCZakF57IM385/L6m7c7JoiDZptm9slKZQ9IXvH1RtX4P8sYtWxXHz9xf8RXHg2Fo8Jgid+w4jakdJd+16oZBhbmAeuF1A83fjF3XXzwWYh34BXX6VA0FWaG03u0KFKAp1vygotcsOsSrd5Mxi6HYPPRfXKOuMfDUoXcQxyt5bpe9gVKmhoOigI3YbQlBWt1QEemGhWkzP8K0lWFhhqwJnespQ1QrbyVHq8x7ZacbNi/cKahuMTtYs9LT9Hv1UpEXAybFGYPG9Ezp0JTamnhLGEpSXj9SbcoGUIEiw3p5u9s/iCaiTUIGW0CehBdTBfoN0oRTbIhFgvyBXpP4RJvxV7NhP1j2pEayHtUPkSogrFwVKtAJXW92/mY8sh+A8tDv9mrylpifYN4UnB0rrazY/V1WyxR2onCYslxvloOwmjNZVRhEkDw19ZJKcFkkCIA=
     skip_cleanup: true
     on:
       repo: sualeh/pointlocation6709-ts
       branch: master
       tags: true
     file_glob: true
-    file:
-      - "pointlocation6709-ts-*.tgz"
+    file: "pointlocation6709-ts-*.tgz"
   - provider: pages
     github_token: $GITHUB_TOKEN
     skip_cleanup: true
@@ -38,4 +44,3 @@ deploy:
     local_dir: "./docs"
     email: "sualeh@hotmail.com"
     name: "Sualeh Fatehi"
-
