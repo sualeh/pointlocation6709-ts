@@ -24,6 +24,7 @@ deploy:
     on:
       repo: sualeh/pointlocation6709-ts
       branch: master
+      tags: true
   - provider: releases
     api_key:
       secure: ah9c1JUTzbqpFdwvVBTLGaSx9/r5PIPhF1TIDRM6ilEEHNWxFAh76Z9XCFm6xPgYfMjTG3RPObpJWypkU5AeieJFQss5GhdD0O3rcvU5OqRkEqtsKG+Oixs0YnA+QLMA9CTdscx51nkOtRMddCUKbjPLkMn7yDulpFFtibEv1bsdGSvIOw93LUSvGpUeE+1AaRQ5/6D+39VRUI1Xg1LWjF1AKKoODH1g99pl3gO02vGaCZakF57IM385/L6m7c7JoiDZptm9slKZQ9IXvH1RtX4P8sYtWxXHz9xf8RXHg2Fo8Jgid+w4jakdJd+16oZBhbmAeuF1A83fjF3XXzwWYh34BXX6VA0FWaG03u0KFKAp1vygotcsOsSrd5Mxi6HYPPRfXKOuMfDUoXcQxyt5bpe9gVKmhoOigI3YbQlBWt1QEemGhWkzP8K0lWFhhqwJnespQ1QrbyVHq8x7ZacbNi/cKahuMTtYs9LT9Hv1UpEXAybFGYPG9Ezp0JTamnhLGEpSXj9SbcoGUIEiw3p5u9s/iCaiTUIGW0CehBdTBfoN0oRTbIhFgvyBXpP4RJvxV7NhP1j2pEayHtUPkSogrFwVKtAJXW92/mY8sh+A8tDv9mrylpifYN4UnB0rrazY/V1WyxR2onCYslxvloOwmjNZVRhEkDw19ZJKcFkkCIA=
@@ -31,6 +32,7 @@ deploy:
     on:
       repo: sualeh/pointlocation6709-ts
       branch: master
+      tags: true
     file_glob: true
     file: "pointlocation6709-ts-*.tgz"
   - provider: pages
@@ -40,6 +42,7 @@ deploy:
     on:
       repo: sualeh/pointlocation6709-ts
       branch: master
+      tags: true
     local_dir: "./docs"
     email: "sualeh@hotmail.com"
     name: "Sualeh Fatehi"
