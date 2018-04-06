@@ -16,7 +16,6 @@ script:
 
 after_success:
   - npm run typedoc
-  - npm run coverage
   - touch ./docs/.nojekyll
 
 deploy:
