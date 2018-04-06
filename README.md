@@ -1,3 +1,10 @@
+[![Build Status](https://travis-ci.org/sualeh/pointlocation6709-ts.svg?branch=master)](https://travis-ci.org/sualeh/pointlocation6709-ts)
+[![Coverage Status](https://img.shields.io/codecov/c/github/sualeh/pointlocation6709-ts/master.svg)](https://codecov.io/gh/sualeh/pointlocation6709-ts)
+
+
+[![Main distribution](https://img.shields.io/badge/zip-download-blue.svg)](https://github.com/sualeh/pointlocation6709-ts/releases/latest)
+[![npm](https://img.shields.io/npm/v/pointlocation6709-ts.svg)](https://www.npmjs.com/package/pointlocation6709-ts)
+
 # Point Location 6709 
 
 A TypeScript representation of [ISO 6709] geographic point location by coordinates. Validity is enforced by unit tests. (See the sister project, a Java library for [Point Location 6709], which more full-featured, with a parser and formatter.)
