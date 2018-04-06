@@ -13,7 +13,10 @@ script:
   - npm run build
   - npm test
   - npm pack
+
+after_success:
   - npm run typedoc
+  - npm run coverage
   - touch ./docs/.nojekyll
 
 deploy:

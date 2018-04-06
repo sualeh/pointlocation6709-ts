@@ -1,5 +1,7 @@
 .vscode/
 .editorconfig
 docs/
+.nyc_output/
+coverage.lcov
 
 pointlocation6709-ts-*.tgz
