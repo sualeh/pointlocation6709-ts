@@ -11,12 +11,12 @@ before_script:
 
 script:
   - npm run build
+  - npm run typedoc
   - npm test
   - npm pack
 
 after_success:
   - npm run coverage
-  - npm run typedoc
   - touch ./docs/.nojekyll
 
 deploy:
