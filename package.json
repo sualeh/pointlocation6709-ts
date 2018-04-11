@@ -1,6 +1,6 @@
 {
   "name": "pointlocation6709-ts",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "ISO 6709 Point Location - Typescript Implementation",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,7 +8,8 @@
     "build": "tsc",
     "test": "nyc --require typescript --require ts-node/register --require source-map-support/register --extension .ts mocha -r ts-node/register ./src/test/typescript/**/*.test.ts",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src/main/typescript"
+    "typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src/main/typescript",
+    "prepare": "npm run build"
   },
   "keywords": [
     "ISO 6709",
