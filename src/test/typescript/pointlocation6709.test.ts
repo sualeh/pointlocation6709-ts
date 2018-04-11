@@ -124,3 +124,22 @@ describe('Test Longitude', () => {
   });
 
 });
+
+describe('Test Point Location', () => {
+
+  it('Happy path test', () => {
+
+    let angle1 = new PointLocation6709.Angle(1);
+    let latitude1 = new PointLocation6709.Latitude(angle1);
+    let longitude1 = new PointLocation6709.Longitude(angle1);
+
+    let pointlocation1 = new PointLocation6709.PointLocation(latitude1, longitude1, 1.5, "Coordinate System")
+
+    expect(pointlocation1.getAltitude()).to.equal(1.5);
+    expect(pointlocation1.getCoordinateReferenceSystemIdentifier()).to.equal("Coordinate System");
+    expect(pointlocation1.getLatitude()).to.equal(latitude1);
+    expect(pointlocation1.getLongitude()).to.equal(longitude1);
+    expect(pointlocation1.toString()).to.equal("57\u00B0 17\" 45' N 57\u00B0 17\" 45' E 1.5");
+  });
+
+});

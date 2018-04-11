@@ -57,7 +57,7 @@ export namespace PointLocation6709 {
     }
 
     protected checkRange(range: number): void {
-      var degrees = this.getDegrees();
+      let degrees = this.getDegrees();
       if (Math.abs(degrees) > range) {
         throw new Error("" + degrees + Fields.DEGREES.toString() + " is out of range, +/-"
           + range + Fields.DEGREES.toString());
@@ -86,11 +86,11 @@ export namespace PointLocation6709 {
      */
     private sexagesimalSplit(value: number): number[] {
 
-      var absValue;
-      var units;
-      var minutes;
-      var seconds;
-      var sign = value < 0 ? -1 : 1;
+      let absValue: number;
+      let units: number;
+      let minutes: number;
+      let seconds: number;
+      let sign: number = value < 0 ? -1 : 1;
 
       // Calculate absolute integer units
       absValue = Math.abs(value);
@@ -126,12 +126,12 @@ export namespace PointLocation6709 {
     }
 
     public toString(): string {
-      var absIntDegrees = Math.abs(this.getField(Fields.DEGREES));
-      var absIntMinutes = Math.abs(this.getField(Fields.MINUTES));
-      var absIntSeconds = Math.abs(this.getField(Fields.SECONDS));
-      var direction = this.getDirection();
+      let absIntDegrees = Math.abs(this.getField(Fields.DEGREES));
+      let absIntMinutes = Math.abs(this.getField(Fields.MINUTES));
+      let absIntSeconds = Math.abs(this.getField(Fields.SECONDS));
+      let direction = this.getDirection();
 
-      var angleString = "" + absIntDegrees + Fields.DEGREES.toString() + " " + absIntMinutes + Fields.MINUTES.toString();
+      let angleString = "" + absIntDegrees + Fields.DEGREES.toString() + " " + absIntMinutes + Fields.MINUTES.toString();
       if (absIntSeconds > 0) {
         angleString = angleString + " " + absIntSeconds + Fields.SECONDS.toString();
       }
@@ -151,7 +151,7 @@ export namespace PointLocation6709 {
     }
 
     public compareTo(angle: Angle): number {
-      var comparison: number;
+      let comparison: number;
       comparison = this.getField(Fields.DEGREES) - angle.getField(Fields.DEGREES);
       if (comparison == 0) {
         comparison = this.getField(Fields.MINUTES) - angle.getField(Fields.MINUTES);
@@ -169,7 +169,7 @@ export namespace PointLocation6709 {
       if (!(obj instanceof Angle)) {
         return false;
       }
-      var other: Angle = obj as Angle;
+      let other: Angle = obj as Angle;
       return this.compareTo(other) == 0;
     }
 
@@ -241,6 +241,147 @@ export namespace PointLocation6709 {
       else {
         return "E";
       }
+    }
+
+  }
+
+  /**
+  * Coordinates (latitude, longitude and altitude) for a location. The
+  * latitude, longitude and altitude can be parsed from and formatted to
+  * the format defined in ISO 6709, "Standard representation of latitude,
+  * longitude and altitude for geographic point locations".
+  *
+  * @author Sualeh Fatehi
+  */
+  export class PointLocation {
+
+
+    private readonly latitude: Latitude;
+    private readonly longitude: Longitude;
+    private readonly altitude: number;
+    private readonly coordinateReferenceSystemIdentifier: string;
+
+    /**
+     * Constructor.
+     *
+     * @param latitude
+     *        Latitude
+     * @param longitude
+     *        Longitude
+     * @param altitude
+     *        Altitude
+     * @param coordinateReferenceSystemIdentifier
+     *        CRS identifier
+     */
+    public constructor(latitude: Latitude, longitude: Longitude,
+      altitude: number = 0,
+      coordinateReferenceSystemIdentifier: string = "") {
+      if (latitude == null || longitude == null) {
+        throw new TypeError("Both latitude and longitude need to be specified");
+      }
+      this.latitude = latitude;
+      this.longitude = longitude;
+      this.altitude = altitude;
+      this.coordinateReferenceSystemIdentifier = coordinateReferenceSystemIdentifier.trim();
+    }
+
+
+    public compareTo(pointLocation: PointLocation): number {
+      let comparison: number;
+      comparison = this.altitude - pointLocation.altitude;
+      if (comparison == 0) {
+        comparison = this.latitude.compareTo(pointLocation.latitude);
+      }
+      if (comparison == 0) {
+        comparison = this.longitude.compareTo(pointLocation.longitude);
+      }
+      return comparison;
+    }
+
+
+    public equals(obj: any): boolean {
+      if (obj == null) {
+        return false;
+      }
+      if (!(obj instanceof PointLocation)) {
+        return false;
+      }
+      let other: PointLocation = obj as PointLocation;
+      if (this.altitude != other.altitude) {
+        return false;
+      }
+      if (this.coordinateReferenceSystemIdentifier == null) {
+        if (other.coordinateReferenceSystemIdentifier != null) {
+          return false;
+        }
+      }
+      else if (this.coordinateReferenceSystemIdentifier
+        != other.coordinateReferenceSystemIdentifier) {
+        return false;
+      }
+      if (this.latitude == null) {
+        if (other.latitude != null) {
+          return false;
+        }
+      }
+      else if (!this.latitude.equals(other.latitude)) {
+        return false;
+      }
+      if (this.longitude == null) {
+        if (other.longitude != null) {
+          return false;
+        }
+      }
+      else if (!this.longitude.equals(other.longitude)) {
+        return false;
+      }
+      return true;
+    }
+
+    /**
+     * Altitude for this location, in meters.
+     *
+     * @return Altitude
+     */
+    public getAltitude(): number {
+      return this.altitude;
+    }
+
+    /**
+     * Coordinate reference system identifier. See <a
+     * href="https://en.wikipedia.org/wiki/Coordinate_reference_system">
+     * Spatial reference system</a>
+     *
+     * @return CRS identifier
+     */
+    public getCoordinateReferenceSystemIdentifier(): string {
+      return this.coordinateReferenceSystemIdentifier;
+    }
+
+    /**
+     * Latitude for this location. Northern latitudes are positive.
+     *
+     * @return Latitude.
+     */
+    public getLatitude(): Latitude {
+      return this.latitude;
+    }
+
+    /**
+     * Longitude for this location. Eastern latitudes are positive.
+     *
+     * @return Longitude.
+     */
+    public getLongitude(): Longitude {
+      return this.longitude;
+    }
+
+    public toString(): string {
+      let toString: string = this.latitude.toString() + " " + this.longitude.toString();
+      if (this.altitude != 0) {
+        toString = toString + " " + this.altitude;
+      }
+      return toString;
     }
 
   }
