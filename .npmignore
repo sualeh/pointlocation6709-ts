@@ -5,5 +5,6 @@ docs/
 coverage.lcov
 tsconfig.json
 src/
+.travis.yml
 
 pointlocation6709-ts-*.tgz
