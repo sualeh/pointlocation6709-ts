@@ -150,6 +150,29 @@ export namespace PointLocation6709 {
       return angleString;
     }
 
+    public compareTo(angle: Angle): number {
+      var comparison: number;
+      comparison = this.getField(Fields.DEGREES) - angle.getField(Fields.DEGREES);
+      if (comparison == 0) {
+        comparison = this.getField(Fields.MINUTES) - angle.getField(Fields.MINUTES);
+      }
+      if (comparison == 0) {
+        comparison = this.getField(Fields.SECONDS) - angle.getField(Fields.SECONDS);
+      }
+      return comparison;
+    }
+
+    public equals(obj: any): boolean {
+      if (obj == null) {
+        return false;
+      }
+      if (!(obj instanceof Angle)) {
+        return false;
+      }
+      var other: Angle = obj as Angle;
+      return this.compareTo(other) == 0;
+    }
+
     /**
     * Static construction method, constructs an angle from the degree
     * value provided.

@@ -38,6 +38,19 @@ describe('Test Angle', () => {
     expect(angle2.toString()).to.equal("1\u00B0 0\"");
   });
 
+  it('Comparisons', () => {
+    let angle1 = PointLocation6709.Angle.fromRadians(1);
+    let angle2 = PointLocation6709.Angle.fromRadians(1);
+    let angle3 = PointLocation6709.Angle.fromRadians(1.1);
+
+    expect(angle1.compareTo(angle2)).to.equal(0);
+    expect(angle1.compareTo(angle3)).to.be.lessThan(0);
+    expect(angle3.compareTo(angle1)).to.be.greaterThan(0);
+
+    expect(angle1.equals(angle2)).to.equal(true);
+    expect(angle1.equals(angle3)).to.equal(false);
+  });
+
 });
 
 describe('Test Latitude', () => {
