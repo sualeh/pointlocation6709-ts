@@ -9,7 +9,11 @@ A TypeScript representation of [ISO 6709] geographic point location by coordinat
 
 ## Download
 
-You can download the TypeScript library from npm.
+You can download the TypeScript library from [npm](https://www.npmjs.com/package/pointlocation6709-ts).
+
+## Usage
+
+Please look at the [pointlocation6709-ts--client](https://github.com/sualeh/pointlocation6709-ts--client) project to see how to import and use the Point Location 6709 TypeScript library.
 
 ## Development
 
@@ -45,6 +49,9 @@ To publish, run
 ```sh
 npm publish
 ```
+
+Packaging and publishing will run a build so that the distribution files can be included in the published package.
+
 
 ## Resources Used to Create This Library
 
