@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "listFiles": true,
+    "module": "CommonJS",
+    "target": "ES6",
+    "declaration": true,
+    "allowJs": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
@@ -14,7 +16,10 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "outDir": "dist",
+    "declarationDir": "dist",
     "baseUrl": ".",
+    "listEmittedFiles": true,
+    "pretty": true,
     "paths": {
       "*": [
         "node_modules/*"

@@ -46,9 +46,10 @@ To publish, run
 npm publish
 ```
 
-## Resources
+## Resources Used to Create This Library
 
 * [How to Create and Publish an npm module in TypeScript](https://codeburst.io/https-chidume-nnamdi-com-npm-module-in-typescript-12b3b22f0724)
+* [How to write a Typescript library](https://www.tsmean.com/articles/how-to-write-a-typescript-library/)
 
 [ISO 6709]: https://en.wikipedia.org/wiki/ISO_6709
 [Point Location 6709]: https://github.com/sualeh/pointlocation6709/

@@ -1,7 +1,7 @@
 
 export namespace PointLocation6709 {
 
-  class Field {
+  export class Field {
 
     private readonly _name: string;
     private readonly _ordinal: number;
