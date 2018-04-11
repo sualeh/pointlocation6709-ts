@@ -1,5 +1,5 @@
 {
-  "name": "PointLocation6709",
+  "name": "pointlocation6709-ts",
   "version": "0.1.0",
   "description": "ISO 6709 Point Location - Typescript Implementation",
   "main": "./dist/index.js",
@@ -13,7 +13,8 @@
   "keywords": [
     "ISO 6709",
     "location",
-    "geographical"
+    "geographical",
+	"point location"
   ],
   "author": {
     "name": "Sualeh Fatehi",
