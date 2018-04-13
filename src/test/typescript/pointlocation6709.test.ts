@@ -4,6 +4,15 @@ const expect = chai.expect;
 
 import { PointLocation6709 } from '../../main/typescript/pointlocation6709';
 
+describe('Test Field', () => {
+
+  it('Happy path test', () => {
+    let field = PointLocation6709.Fields.DEGREES;
+    expect(field.getName()).to.equal("degrees");
+  });
+
+});
+
 describe('Test Angle', () => {
 
   it('Happy path test, with radians', () => {
@@ -49,6 +58,9 @@ describe('Test Angle', () => {
 
     expect(angle1.equals(angle2)).to.equal(true);
     expect(angle1.equals(angle3)).to.equal(false);
+
+    expect(angle1.equals(null)).to.equal(false);
+    expect(angle1.equals("angle3")).to.equal(false);
   });
 
 });
@@ -133,13 +145,70 @@ describe('Test Point Location', () => {
     let latitude1 = new PointLocation6709.Latitude(angle1);
     let longitude1 = new PointLocation6709.Longitude(angle1);
 
-    let pointlocation1 = new PointLocation6709.PointLocation(latitude1, longitude1, 1.5, "Coordinate System")
+    let pointlocation1 = new PointLocation6709.PointLocation(latitude1, longitude1, 1.5, "Coordinate System");
 
     expect(pointlocation1.getAltitude()).to.equal(1.5);
     expect(pointlocation1.getCoordinateReferenceSystemIdentifier()).to.equal("Coordinate System");
     expect(pointlocation1.getLatitude()).to.equal(latitude1);
     expect(pointlocation1.getLongitude()).to.equal(longitude1);
     expect(pointlocation1.toString()).to.equal("57\u00B0 17\" 45' N 57\u00B0 17\" 45' E 1.5");
+
+    let pointlocation2 = new PointLocation6709.PointLocation(latitude1, longitude1, 1.5)
+
+    expect(pointlocation2.getAltitude()).to.equal(1.5);
+    expect(pointlocation2.getCoordinateReferenceSystemIdentifier()).to.equal("");
+    expect(pointlocation2.getLatitude()).to.equal(latitude1);
+    expect(pointlocation2.getLongitude()).to.equal(longitude1);
+    expect(pointlocation2.toString()).to.equal("57\u00B0 17\" 45' N 57\u00B0 17\" 45' E 1.5");
+
+    let pointlocation3 = new PointLocation6709.PointLocation(latitude1, longitude1)
+
+    expect(pointlocation3.getAltitude()).to.equal(0);
+    expect(pointlocation3.getCoordinateReferenceSystemIdentifier()).to.equal("");
+    expect(pointlocation3.getLatitude()).to.equal(latitude1);
+    expect(pointlocation3.getLongitude()).to.equal(longitude1);
+    expect(pointlocation3.toString()).to.equal("57\u00B0 17\" 45' N 57\u00B0 17\" 45' E");
+  });
+
+  it('Negative test, constructor', () => {
+
+    let angle1 = new PointLocation6709.Angle(1);
+    let latitude1 = new PointLocation6709.Latitude(angle1);
+    let longitude1 = new PointLocation6709.Longitude(angle1);
+
+    expect(() => new PointLocation6709.PointLocation(null, longitude1))
+      .to.throw('Both latitude and longitude need to be specified');
+
+    expect(() => new PointLocation6709.PointLocation(latitude1, null))
+      .to.throw('Both latitude and longitude need to be specified');
+  });
+
+  it('Comparison', () => {
+
+    let angle1 = new PointLocation6709.Angle(1);
+    let angle2 = new PointLocation6709.Angle(0.5);
+    let latitude1 = new PointLocation6709.Latitude(angle1);
+    let longitude1 = new PointLocation6709.Longitude(angle1);
+    let latitude2 = new PointLocation6709.Latitude(angle2);
+    let longitude2 = new PointLocation6709.Longitude(angle2);
+
+    let pointlocation1 = new PointLocation6709.PointLocation(latitude1, longitude1, 1.5, "Coordinate System");
+    let pointlocation1a = new PointLocation6709.PointLocation(latitude1, longitude1, 1.5, "Coordinate System");
+    let pointlocation2 = new PointLocation6709.PointLocation(latitude1, longitude1, 2);
+    let pointlocation3 = new PointLocation6709.PointLocation(latitude1, longitude2, 1.5, "Coordinate System");
+    let pointlocation4 = new PointLocation6709.PointLocation(latitude2, longitude1, 1.5, "Coordinate System");
+
+    expect(pointlocation1.compareTo(pointlocation1a)).to.equal(0);
+    expect(pointlocation1.compareTo(pointlocation2)).to.be.lessThan(0);
+    expect(pointlocation1.compareTo(pointlocation2)).to.be.lessThan(0);
+    expect(pointlocation1.compareTo(pointlocation3)).to.be.greaterThan(0);
+
+    expect(pointlocation1.equals(pointlocation1a)).to.equal(true);
+    expect(pointlocation1.equals(pointlocation2)).to.equal(false);
+
+    expect(pointlocation1.equals(null)).to.equal(false);
+    expect(pointlocation1.equals("pointlocation1")).to.equal(false);
+
   });
 
 });
