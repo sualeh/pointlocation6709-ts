@@ -307,35 +307,7 @@ export namespace PointLocation6709 {
         return false;
       }
       let other: PointLocation = obj as PointLocation;
-      if (this.altitude != other.altitude) {
-        return false;
-      }
-      if (this.coordinateReferenceSystemIdentifier == null) {
-        if (other.coordinateReferenceSystemIdentifier != null) {
-          return false;
-        }
-      }
-      else if (this.coordinateReferenceSystemIdentifier
-        != other.coordinateReferenceSystemIdentifier) {
-        return false;
-      }
-      if (this.latitude == null) {
-        if (other.latitude != null) {
-          return false;
-        }
-      }
-      else if (!this.latitude.equals(other.latitude)) {
-        return false;
-      }
-      if (this.longitude == null) {
-        if (other.longitude != null) {
-          return false;
-        }
-      }
-      else if (!this.longitude.equals(other.longitude)) {
-        return false;
-      }
-      return true;
+      return this.compareTo(other) == 0;
     }
 
     /**
