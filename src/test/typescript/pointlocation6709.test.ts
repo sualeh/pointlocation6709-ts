@@ -170,33 +170,18 @@ describe('Test Point Location', () => {
     expect(pointlocation3.toString()).to.equal("57\u00B0 17\" 45' N 57\u00B0 17\" 45' E");
   });
 
-  it('Negative test, constructor', () => {
-
-    let angle1 = new PointLocation6709.Angle(1);
-    let latitude1 = new PointLocation6709.Latitude(angle1);
-    let longitude1 = new PointLocation6709.Longitude(angle1);
-
-    expect(() => new PointLocation6709.PointLocation(null, longitude1))
-      .to.throw('Both latitude and longitude need to be specified');
-
-    expect(() => new PointLocation6709.PointLocation(latitude1, null))
-      .to.throw('Both latitude and longitude need to be specified');
-  });
-
   it('Comparison', () => {
 
     let angle1 = new PointLocation6709.Angle(1);
     let angle2 = new PointLocation6709.Angle(0.5);
     let latitude1 = new PointLocation6709.Latitude(angle1);
     let longitude1 = new PointLocation6709.Longitude(angle1);
-    let latitude2 = new PointLocation6709.Latitude(angle2);
     let longitude2 = new PointLocation6709.Longitude(angle2);
 
     let pointlocation1 = new PointLocation6709.PointLocation(latitude1, longitude1, 1.5, "Coordinate System");
     let pointlocation1a = new PointLocation6709.PointLocation(latitude1, longitude1, 1.5, "Coordinate System");
     let pointlocation2 = new PointLocation6709.PointLocation(latitude1, longitude1, 2);
     let pointlocation3 = new PointLocation6709.PointLocation(latitude1, longitude2, 1.5, "Coordinate System");
-    let pointlocation4 = new PointLocation6709.PointLocation(latitude2, longitude1, 1.5, "Coordinate System");
 
     expect(pointlocation1.compareTo(pointlocation1a)).to.equal(0);
     expect(pointlocation1.compareTo(pointlocation2)).to.be.lessThan(0);
