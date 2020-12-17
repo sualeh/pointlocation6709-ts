@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sualeh/pointlocation6709-ts.svg?branch=master)](https://travis-ci.org/sualeh/pointlocation6709-ts)
+![Quick Build](https://github.com/sualeh/pointlocation6709-ts/workflows/Quick%20Build/badge.svg)
 [![Coverage Status](https://img.shields.io/codecov/c/github/sualeh/pointlocation6709-ts/master.svg)](https://codecov.io/gh/sualeh/pointlocation6709-ts)
 [![Main distribution](https://img.shields.io/badge/zip-download-blue.svg)](https://github.com/sualeh/pointlocation6709-ts/releases/latest)
 [![npm](https://img.shields.io/npm/v/pointlocation6709-ts.svg)](https://www.npmjs.com/package/pointlocation6709-ts)
