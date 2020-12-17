@@ -1,32 +1,62 @@
+[![Build Status](https://travis-ci.org/sualeh/pointlocation6709-ts.svg?branch=master)](https://travis-ci.org/sualeh/pointlocation6709-ts)
+[![Coverage Status](https://img.shields.io/codecov/c/github/sualeh/pointlocation6709-ts/master.svg)](https://codecov.io/gh/sualeh/pointlocation6709-ts)
+[![Main distribution](https://img.shields.io/badge/zip-download-blue.svg)](https://github.com/sualeh/pointlocation6709-ts/releases/latest)
+[![npm](https://img.shields.io/npm/v/pointlocation6709-ts.svg)](https://www.npmjs.com/package/pointlocation6709-ts)
+
 # Point Location 6709 
 
-![Quick Build](https://github.com/sualeh/pointlocation6709/workflows/Quick%20Build/badge.svg)
-[![Maven Central](https://img.shields.io/maven-central/v/us.fatehi/pointlocation6709.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3Aus.fatehi%20pointlocation6709)
-
-*Point Location 6709* is a Java representation of [ISO 6709] geographic point location by coordinates. 
-
-All classes are immutable and thread-safe. The code includes a parser that can parse all valid ISO 6709 representations. A formatter formats point locations to ISO 6709 "[human interface]" representations as well as "[string expressions]". Validity is enforced by JUnit tests. Java 7 or newer is required. 
-
-(See [sualeh/pointlocation6709-ts](https://github.com/sualeh/pointlocation6709-ts) for a Typescript library for Point Location 6709.)
+A TypeScript representation of [ISO 6709] geographic point location by coordinates. Validity is enforced by unit tests. (See the sister project, a Java library for [Point Location 6709], which more full-featured, with a parser and formatter.)
 
 ## Download
 
-You can download the [jar on the Maven Central Repository].
+You can download the TypeScript library from [npm](https://www.npmjs.com/package/pointlocation6709-ts).
 
-## Maven Build
+## Usage
 
-To use *Point Location 6709* in your Maven build, include the following dependency. No repositories references are needed, since the jars are in the Maven Central Repository.
+Please look at the [pointlocation6709-ts--client](https://github.com/sualeh/pointlocation6709-ts--client) project to see how to import and use the Point Location 6709 TypeScript library.
 
-```xml
-<dependency>
-    <groupId>us.fatehi</groupId>
-    <artifactId>pointlocation6709</artifactId>
-    <version>4.2.1</version>
-</dependency>
+## Development
+
+### Install Pre-requisites
+
+Run
+```sh
+npm install
 ```
 
+### Test
+
+Run
+```sh
+npm test
+```
+
+### Build
+
+Run
+```sh
+npm run build
+```
+
+### Publish
+
+To check packaging, run
+```sh
+npm pack
+```
+
+To publish, run
+```sh
+npm publish
+```
+
+Packaging and publishing will run a build so that the distribution files can be included in the published package.
+
+
+## Resources Used to Create This Library
+
+* [How to Create and Publish an npm module in TypeScript](https://codeburst.io/https-chidume-nnamdi-com-npm-module-in-typescript-12b3b22f0724)
+* [How to write a Typescript library](https://www.tsmean.com/articles/how-to-write-a-typescript-library/)
 
 [ISO 6709]: https://en.wikipedia.org/wiki/ISO_6709
-[human interface]: https://en.wikipedia.org/wiki/ISO_6709#Representation_at_the_human_interface_.28Annex_D.29
-[string expressions]: https://en.wikipedia.org/wiki/ISO_6709#String_expression_.28Annex_H.29
-[jar on the Maven Central Repository]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22pointlocation6709%22
+[Point Location 6709]: https://github.com/sualeh/pointlocation6709/
