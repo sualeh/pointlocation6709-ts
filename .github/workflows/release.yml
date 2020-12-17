@@ -71,7 +71,7 @@ jobs:
         draft: false
         prerelease: false
 
-# PUBLISH TO NPM AND GHP REGISTRIES
+# PUBLISH TO NPM REGISTRY
     - id: publish
       name: Publish to NPM
       if: startsWith(github.ref, 'refs/tags/')
@@ -80,19 +80,3 @@ jobs:
         npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - id: setup-node-ghp
-      name: Setup Node 14.x for GitHub Packages
-      uses: actions/setup-node@v2
-      if: startsWith(github.ref, 'refs/tags/')
-      # Setup .npmrc file to publish to npm
-      with:
-        node-version: '14'
-        registry-url: 'https://npm.pkg.github.com'
-    - id: publish-ghp
-      name: Publish to GHP
-      if: startsWith(github.ref, 'refs/tags/')
-      run: |
-        # Publish to NPM
-        npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
