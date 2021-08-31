@@ -1,6 +1,6 @@
 {
   "name": "pointlocation6709-ts",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "ISO 6709 Point Location - Typescript Implementation",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
