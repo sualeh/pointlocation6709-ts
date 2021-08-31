@@ -15,10 +15,11 @@ jobs:
       name: Checkout code
       uses: actions/checkout@v2
     - id: setup-node
+      name: Setup Node
       uses: actions/setup-node@v2
       # Setup .npmrc file to publish to npm
       with:
-        node-version: '14'
+        node-version: '16'
         registry-url: 'https://registry.npmjs.org'
 
 # BUILD
