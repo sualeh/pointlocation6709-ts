@@ -4,8 +4,13 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [created]
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - '*'
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
+      - v[0-9]+.[0-9]+.[0-9]+-[A-Z]
 
 jobs:
   build:
