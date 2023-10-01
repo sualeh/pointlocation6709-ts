@@ -18,7 +18,7 @@ jobs:
 # SETUP BUILD ENVIRONMENT
     - id: checkout-code
       name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - id: setup-node
       name: Setup Node
       uses: actions/setup-node@v3
