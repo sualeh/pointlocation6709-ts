@@ -32,3 +32,8 @@ jobs:
         npm run build
         npm test
         npm run coverage
+    - id: upload-coverage
+      name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v5
+      with:
+        files: ./coverage.lcov
