@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "test": "nyc --require typescript --require ts-node/register --require source-map-support/register --extension .ts mocha -r ts-node/register ./src/test/typescript/**/*.test.ts",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov",
     "typedoc": "typedoc --out ./docs --tsconfig ./tsconfig.json ./src/main/typescript",
     "prepare": "npm run build"
   },
@@ -31,13 +31,11 @@
     "url": "https://github.com/sualeh/pointlocation6709-ts/issues"
   },
   "homepage": "https://github.com/sualeh/pointlocation6709-ts",
-  "dependencies": {},
   "devDependencies": {
     "@types/chai": "*",
     "@types/mocha": "*",
     "@types/node": "*",
     "chai": "*",
-    "codecov": "*",
     "mocha": "*",
     "nyc": "*",
     "source-map-support": "*",
