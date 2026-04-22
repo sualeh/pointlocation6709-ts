@@ -27,8 +27,7 @@ jobs:
       name: Build and test
       run: |
         # Build
-        npm install -g typescript
-        npm install
+        npm ci
         npm run build
         npm test
         npm run coverage
