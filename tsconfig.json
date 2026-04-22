@@ -10,21 +10,19 @@
     "noUnusedParameters": true,
     "removeComments": false,
     "alwaysStrict": true,
-    "moduleResolution": "node",
     "noImplicitAny": true,
     "preserveConstEnums": true,
     "sourceMap": true,
     "strictNullChecks": true,
+    "types": [
+      "node",
+      "mocha"
+    ],
+    "rootDir": "src/main/typescript",
     "outDir": "dist",
     "declarationDir": "dist",
-    "baseUrl": ".",
     "listEmittedFiles": true,
-    "pretty": true,
-    "paths": {
-      "*": [
-        "node_modules/*"
-      ]
-    }
+    "pretty": true
   },
   "include": [
     "src/main/typescript/**/*"
